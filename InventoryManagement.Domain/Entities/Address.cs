@@ -1,6 +1,5 @@
-﻿
-
-using InventoryManagement.Domain.BaseEntities;
+﻿using InventoryManagement.Domain.BaseEntities;
+using InventoryManagement.Domain.Enums;
 
 namespace InventoryManagement.Domain.Entities
 {
@@ -10,7 +9,8 @@ namespace InventoryManagement.Domain.Entities
         public string RoadNo {  get; set; }
         public string HouseNo { get; set; }
         public string FullAddress {  get; set; }
-
-
+        public AddressType AddressType { get; set; }
+        public int CustomerId { get; set; }
+        public Customer Customer { get; set; } 
     }
 }

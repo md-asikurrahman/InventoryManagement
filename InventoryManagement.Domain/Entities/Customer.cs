@@ -14,6 +14,6 @@ namespace InventoryManagement.Domain.Entities
         public string OthersContact {  get; set; }
         public string NidNo { get; set; }
         public string Email {  get; set; }
-        IList<Address> Addresses { get; set; }
+        IList<Address> Addresses { get; set; } = new List<Address>();
     }
 }
