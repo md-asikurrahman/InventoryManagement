@@ -28,13 +28,22 @@ namespace InventoryManagement.WEB.ApiConfigure
             var jsonString = await response.Content.ReadAsStringAsync();
             return JsonSerializer.Deserialize<T>(jsonString, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
         }
-        public Task<T> PutAsync<T>(string endpoint, object? data = null) 
+   
+        public async Task<T> PutAsync<T>(string endpoint, object data)
         {
-            throw new NotImplementedException();
+            var jsonContent = new StringContent(JsonSerializer.Serialize(data), Encoding.UTF8, "application/json");
+            HttpResponseMessage response = await _httpClient.PutAsync(endpoint, jsonContent);
+            response.EnsureSuccessStatusCode();
+            var jsonString = await response.Content.ReadAsStringAsync();
+            return JsonSerializer.Deserialize<T>(jsonString, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
         }
-        public Task<T> DeleteAsync<T>(string endpoint, object? data = null) 
+        public async Task<T> DeleteAsync<T>(string endpoint, object data)
         {
-            throw new NotImplementedException();
+            var jsonContent = new StringContent(JsonSerializer.Serialize(data), Encoding.UTF8, "application/json");
+            HttpResponseMessage response = await _httpClient.DeleteAsync(endpoint);
+            response.EnsureSuccessStatusCode();
+            var jsonString = await response.Content.ReadAsStringAsync();
+            return JsonSerializer.Deserialize<T>(jsonString, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
         }
     }
 }
