@@ -27,11 +27,11 @@ namespace InventoryManagement.WEB.Controllers
             var id = 1;
             var name = string.Empty;
             var todoList =await _apiService.GetAsync<TodoVm>(_apiConfiguration.CreateUser(id));
-            var userList = await _apiService.GetAsync<TodoVm>(_apiConfiguration.GetUserWithMultiValue(id,name));
+            //var userList = await _apiService.GetAsync<TodoVm>(_apiConfiguration.GetUserWithMultiValue(id,name));
 
             todo = todoList;
 
-            return View();
+            return View(todo);
         }
 
         public IActionResult Privacy()
